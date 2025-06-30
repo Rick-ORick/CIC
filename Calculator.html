@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <title>Compound Interest Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <style type="text/css">
+
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      padding: 1rem 2rem;
+      color: white;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background-color: #444;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .hamburger {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Show the menu when active */
+    .nav-links.show {
+      display: flex;
+    }
+
+    /* Optional: show full nav on large screens */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+
+      .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        gap: 1.5rem;
+        background: none;
+        padding: 0;
+      }
+    }
+
+
+    .sliding-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slide-in 5s ease-in-out infinite;
+  font-size: 30px;
+  color: #333;
+  position: relative;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 0;
+    }
+    p {
+      font-size: 16px;
+    }
+    img {
+      border: 0;
+    }
+    a {
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .bluelink {
+      text-decoration: none;
+      color: #1e5d7b !important;
+    }
+    span.Object {
+      color: inherit !important;
+    }
+    span.Object-hover {
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+    u + .body .gmail-blend-screen {
+      background: #000;
+      mix-blend-mode: screen;
+    }
+    u + .body .gmail-blend-difference {
+      background: #000;
+      mix-blend-mode: difference;
+    }
+
+    .button#calb {color: blue; font-size: 20px; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; background-color: #f9f9f9;}
+
+    .ExternalClass {
+      width: 100%;
+    }
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+      line-height: 100%;
+    }
+    a[x-apple-data-detectors=true] {
+      color: inherit !important;
+      text-decoration: inherit !important;
+    }
+    @media screen and (max-width: 599.98px) {
+      .column-wrapper .padding {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+      }
+      .column-wrapper .column {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .column-wrapper {
+        padding: 0 75px !important;
+      }
+    }
+    @media screen and (max-width: 499.98px) {
+      .column-wrapper {
+        padding: 0 45px !important;
+      }
+    }
+    @media screen and (max-width: 399.98px) {
+      .column-wrapper {
+        padding: 0 20px !important;
+      }
+    }
+  </style>
+</head>
+<body class="body" xml:lang="en" style="margin:0;padding:0;min-width:100%; background-color: red;">
+
+      <nav>
+    <div class="logo">MySite</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">Calculator</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+  </script>
+
+  <table align="center" style="border-spacing:0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; margin: 0 auto; padding:0; width: 100%; max-width: 600px;" role="presentation">
+    <tr>
+      <td>
+        <table align="center" style="border-spacing:0; border-collapse: collapse; color:#3d3d3d; font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 30px; margin: 0 auto; padding:0; width: 100%; max-width: 600px;" role="presentation">
+  <tr>
+    <td align="center" style="padding: 40px; font-size: 30px;">
+      <div style="text-align: center; margin-bottom: 30px;"
+      ><h1 class="sliding-text" style="margin-bottom: 20px;">Welcome to your Compounded Interest Calculator</h1></div>
+      <h2 style="margin-bottom: 30px; font-size: 25px;">Insert your info over here:</h2>
+
+      <table style="border-spacing: 15px; background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.1); width: 100%;">
+        <tr>
+          <td style="padding: 30px;">
+            <label for="init_amount">Initial Investment</label><br>
+            <input type="number" id="init_amount" style="font-size: 18px; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; background-color: #f9f9f9; color: #333;" type="number" placeholder="Insert your initial investment amount"><br><br>
+
+            <label for="monthly_contribution">Monthly Contribution</label><br>
+            <input type="number" id="monthly_contribution" style="font-size: 18px; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; background-color: #f9f9f9; color: #333;" type="number" placeholder="What will be your monthly contribution?" type="number"><br><br>
+
+            <label for="number_of_years">Years to Compound</label><br>
+            <input type="number" id="number_of_years" style="font-size: 18px; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; background-color: #f9f9f9; color: #333;" type="number" placeholder="For how many years do you expect to keep investing?" type="number"><br><br>
+
+            <label for="interest_rate">Annual Interest Rate</label><br>
+            <input type="number" id="interest_rate" style="font-size: 18px; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 6px; background-color: #f9f9f9; color: #333;" type="number" placeholder="What is your expected interest rate in this investment?" type="number"><br><br>
+
+            <button class="button" id="calb" onclick="calculate()">Calculate</button>
+
+            <div id="result" style="margin-top: 20px;"></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+<script src="index.js"></script>
+</html>
